@@ -1,0 +1,53 @@
+<div class="background">
+    <div class="register-box">
+        <% if (title) { %>
+        <h1><%= title %></h1>
+        <% } else { 
+              res.redirect('/') 
+        } %>
+
+        <% if (message) { %>
+        <p class="notice"><%= message %></p>
+        <% } %>
+
+        <% if (errors) { %>
+            <ul class="notice">
+           <% errors.array().forEach(error => { %>
+             <li><%= error.msg %></li>
+          <%  }) %>
+           </ul>
+          <% } %>
+        
+        <form action="/clients/register" method="post">
+            <div class="yourName">
+                <label for="firstname">Your name *</label><br>
+                <input autocomplete="on" type="text" id="firstname" name="client_firstname" placeholder="First name:" required value="<%= locals.client_firstname %>">
+                <label for="lastname" ></label>
+                <input autocomplete="on" type="text" id="lastname" name="client_lastname" placeholder="Last name:" required value="<%= locals.client_lastname %>">
+            </div>
+
+            <div class="email-password">
+                <label for="email">Email address *</label>
+                <input autocomplete="on" type="email" id="email" name="client_email" placeholder="e.g. hello@contact.net" required value="<%= locals.client_email %>">
+            </div>
+    
+            <div class="email-password">
+                <label for="password">Password *</label>
+                <input type="password" id="password" name="client_password" placeholder="  ********  " required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$">
+            </div>
+            
+            <ul class="passwordRulesRegister">
+                <li> <strong> Password must contain: </strong> </li>
+                <li>at least 12 characters</li>
+                <li>at least one number</li>
+                <li>at least one capital letter</li>
+                <li>at least one $#% symbol</li>
+            </ul>
+            <div class="showPassword">
+                <input type="checkbox" id="checkbox" name="checkbox" onclick="showPassword()">
+                <label for="checkbox">Show Password </label><br>
+                <input type="submit" value="LOGIN">
+            </div>
+        </form> 
+    </div>
+</div>

@@ -1,0 +1,15 @@
+<div class="background">
+    <% if (title) { %>
+    <h1><%= title %></h1>
+    <% } else { 
+          res.redirect('/') 
+    } %>
+    
+    <% if (message) { %>
+        <div class="messageCentered"><p class="loginValid"><%= message %></p></div>
+    <% } %>
+    
+    <% if (htmlBody) { %>
+    <div class="description"><%- htmlBody %></div>
+    <% } %>
+</div>
